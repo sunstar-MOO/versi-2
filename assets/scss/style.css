@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Shrikhand&display=swap");
+body,
+html {
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  scroll-behavior: smooth;
+  font-family: "Nunito", serif;
+}
+
+section {
+  padding: 8rem 3rem;
+}
+
+section h1 {
+  color: #774f65;
+  font-family: "Shrikhand", sans-serif;
+}
+
+section .title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+section .title p {
+  color: #774f65;
+}
+
+.home {
+  height: 100vh;
+  padding-top: 20vh;
+  background-color: #ebb4d2;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.home .container {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.home .container .content {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.home .container .content img {
+  max-height: 25vw;
+  min-height: 240px;
+}
+
+.home .container .content p {
+  color: white;
+}
+
+.home .container .content p strong {
+  color: #774f65;
+}
+
+.product {
+  background-color: #a0c3f8;
+}
+
+.product .accordion-collapse {
+  -webkit-transition: 300ms all ease-in-out;
+  transition: 300ms all ease-in-out;
+}
+
+.offer {
+  background-color: #ebb4d2;
+}
+
+.offer .offer-page {
+  background-color: #b1f8cf;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+}
+
+.offer .offer-page .groups {
+  margin-bottom: 1rem;
+}
+/*# sourceMappingURL=style.css.map */

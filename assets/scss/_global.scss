@@ -1,0 +1,76 @@
+body,
+html {
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  transition: all 300ms ease-in-out;
+  scroll-behavior: smooth;
+  font-family: $nunito;
+}
+
+section {
+  padding: 8rem 3rem;
+  h1 {
+    color: $dpurple;
+    font-family: $shrik;
+  }
+  .title {
+    text-align: center;
+    margin-bottom: 3rem;
+    p {
+      color: $dpurple;
+    }
+  }
+}
+
+.home {
+  height: 100vh;
+
+  padding-top: 20vh;
+  background-color: $lpink;
+  justify-content: center;
+  align-content: center;
+
+  .container {
+    justify-content: center;
+    align-content: center;
+
+    .content {
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+
+      img {
+        max-height: 25vw;
+        min-height: 240px;
+      }
+      p {
+        color: white;
+        strong {
+          color: $dpurple;
+          //   cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.product {
+  background-color: $lblue;
+
+  .accordion-collapse {
+    transition: 300ms all ease-in-out;
+  }
+}
+
+.offer {
+  background-color: $lpink;
+  .offer-page {
+    background-color: $lgreen;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    .groups {
+      margin-bottom: 1rem;
+    }
+  }
+}
