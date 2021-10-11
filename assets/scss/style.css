@@ -93,4 +93,8 @@ section .title p {
 .offer .offer-page .groups {
   margin-bottom: 1rem;
 }
+
+#reset {
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */
