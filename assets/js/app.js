@@ -1,3 +1,12 @@
+// DELETE ALL ROWS
+function erase() {
+  var item = document.querySelectorAll("ul li");
+  for (let x = 0; x < item.length; x++) {
+    item[x].remove();
+  }
+}
+
+//CHECK IF THE DATA IS EXIST
 function checkchart(codename) {
   if (sessionStorage[codename]) {
     additem(codename);
@@ -5,21 +14,16 @@ function checkchart(codename) {
     inputitem(codename);
   }
 }
-//delete all rows
-function erase() {
-  var tabler = document.querySelectorAll("tbody tr");
-  for (let x = 0; x < tabler.length; x++) {
-    tabler[x].remove();
-  }
-}
+
+// ADD ITEM QUANTITY
 function additem(codename) {
   var dicti = JSON.parse(sessionStorage[codename]);
   dicti["amount"]++;
   //   console.log(dicti);
   sessionStorage.setItem(codename, JSON.stringify(dicti));
-  refreshing();
 }
 
+// ADD NEW ITEM
 function inputitem(codename) {
   for (x in produk) {
     if (produk[x]["iden"] == codename) {
@@ -36,13 +40,8 @@ function inputitem(codename) {
       };
 
       sessionStorage.setItem(codename, JSON.stringify(dicti));
-      refreshing();
     }
   }
-}
-
-function createl(x) {
-  return document.createElement(x);
 }
 
 //HITUNG HARGA ASLI
@@ -58,7 +57,7 @@ function totalreal() {
   return total;
 }
 
-//HITUNG POTONGAN
+//HITUNG HARGA POTONGAN
 function cutoff() {
   var total = 0;
 
@@ -89,16 +88,13 @@ function totalorigin() {
   return total;
 }
 
+//HITUNG TOTAL OFFER
 function totaloffer() {
   var asli = totalreal();
   var potongan = cutoff();
   var origin = totalorigin();
   var nett = potongan - origin;
   console.log("Selisih potongan dan modal: " + nett);
-
-  // if (nett <= 0) {
-  //   nett = ((asli - origin) * 80) / 100;
-  // }
   if (nett > 15000) {
     nett = (nett * 90) / 100;
   } else {
@@ -109,70 +105,8 @@ function totaloffer() {
   return nett;
 }
 
-function realpay() {
-  var total = totalreal();
-  console.log("Harga Asli:" + total);
-  var row = createl("tr");
-  var row4 = createl("td");
-  row4.setAttribute("colspan", 3);
-  var rowword = createl("th");
-  rowword.innerHTML = "TOTAL";
-  var rowtotal = createl("td");
-  rowtotal.innerHTML = total;
-  row.append(row4, rowword, rowtotal);
-  tbod.append(row);
-}
-
 //DOM OFFERING
-function getoff() {
-  var total = totaloffer();
-  var row = createl("tr");
-  var row4 = createl("td");
-  row4.setAttribute("colspan", 3);
-  var rowword = createl("th");
-  rowword.innerHTML = "OUR OFFER";
-  var rowtotal = createl("td");
-  rowtotal.innerHTML = total;
-  row.append(row4, rowword, rowtotal);
-  tbod.append(row);
-}
 
-function addmore() {
-  var total = totaloffer();
-  var row = createl("tr");
-  var row4 = createl("td");
-  row4.setAttribute("colspan", 1);
-  var rowword = createl("td");
-  rowword.innerHTML = "ADD MORE ITEM TO GET OFFER";
-  var rowtotal = createl("td");
-  rowtotal.innerHTML = "";
-  row.append(row4, rowword, rowtotal);
-  tbod.append(row);
-}
-function resetbutt() {
-  var row = createl("tr");
-  var emp = createl("td");
-  emp.setAttribute("colspan", 1);
-
-  var button = createl("a");
-
-  button.innerHTML = "RESET OFFER";
-  button.setAttribute("class", "link-danger");
-  button.setAttribute("id", "reset");
-
-  row.append(emp, button);
-  tbod.append(row);
-  var reset = document.getElementById("reset");
-  if (reset) {
-    reset.addEventListener("click", function () {
-      // this.remove();
-      erase();
-      console.log("done");
-      sessionStorage.clear();
-      refreshing();
-    });
-  }
-}
 function offering() {
   var quantity = 0;
 
@@ -192,56 +126,106 @@ function offering() {
     console.log("tidak dapat");
   }
 }
-var tbod = document.querySelector("tbody");
+
+var list = document.querySelector(".list-group");
+function createl(x) {
+  return document.createElement(x);
+}
+var nameclass = "list-group-item d-flex justify-content-between align-items-center";
+var totalclass = "badge bg-primary rounded-pill";
+
+function resetbutt() {
+  var word = createl("li");
+  word.setAttribute("class", nameclass);
+  var anchor = createl("button");
+  anchor.setAttribute("id", "reset");
+  anchor.setAttribute("class", "btn btn-danger");
+  anchor.innerHTML = "RESET";
+
+  word.append(anchor);
+  list.append(word);
+
+  var reset = document.getElementById("reset");
+
+  reset.addEventListener("click", function () {
+    // this.remove();
+    // refreshing();
+    erase();
+    sessionStorage.clear();
+
+    console.log("done");
+  });
+}
+
+function addmore() {
+  var total = totaloffer();
+  var word = createl("li");
+  word.setAttribute("class", nameclass + " fw-bold");
+  word.innerHTML = "Add one more item, to unlock our offer ";
+  var number = createl("div");
+  number.setAttribute("class", totalclass);
+  number.innerHTML = total;
+
+  // word.append(number);
+  list.append(word);
+}
+
+function getoff() {
+  var total = totaloffer();
+  var word = createl("li");
+  word.setAttribute("class", nameclass + " fw-bold");
+  word.innerHTML = "OUR OFFER";
+  var number = createl("div");
+  number.setAttribute("class", totalclass);
+  number.innerHTML = total;
+
+  word.append(number);
+  list.append(word);
+}
+
+function realpay() {
+  var total = createl("li");
+  total.setAttribute("class", nameclass + " fw-bold");
+  total.innerHTML = "TOTAL";
+
+  var price = createl("div");
+  price.setAttribute("class", totalclass);
+  price.innerHTML = totalreal();
+
+  total.append(price);
+  list.append(total);
+}
 
 function refreshing() {
-  var tbod = document.querySelector("tbody");
-
   for (x in Object.keys(sessionStorage)) {
     var word = Object.keys(sessionStorage)[x];
-    // console.log(Object.keys(sessionStorage)[x]);
     var dicti = JSON.parse(sessionStorage[word]);
-
-    var number = createl("th");
-    var nomor = x;
-    nomor++;
-
-    number.setAttribute("scope", nomor);
-    number.innerHTML = nomor;
+    var item = createl("li");
+    item.setAttribute("class", nameclass);
 
     var nama = createl("div");
+    nama.setAttribute("class", " fw-bold");
     nama.innerHTML = dicti["name"];
 
-    var durasi = createl("div");
-    durasi.innerHTML = dicti["time"];
+    var qty = createl("div");
+    qty.innerHTML = `(${dicti["amount"]}) ${dicti["price"]}`;
 
-    var item = createl("td");
-    item.append(nama, durasi);
+    var container = createl("div");
+    container.append(nama, qty);
+    item.append(container);
 
-    var qty = createl("td");
-    qty.innerHTML = dicti["amount"];
+    var total = createl("div");
+    total.setAttribute("class", totalclass);
+    total.innerHTML = dicti["amount"] * dicti["price"];
 
-    var price = createl("td");
-    price.innerHTML = dicti["price"];
-
-    var total = createl("td");
-    total.innerHTML = dicti["price"] * dicti["amount"];
-
-    var row = createl("tr");
-    row.append(number, item, qty, price, total);
-
-    // table.append(tbod);
-    tbod.append(row);
+    item.append(total);
+    list.append(item);
   }
+
   realpay();
   offering();
 }
-var table = document.querySelector("table");
 
-// var tbod = createl("tbody");
-// var table = document.querySelector("table");
-// table.append(tbod);
-
-if (Object.keys(sessionStorage)) {
+if (Boolean(sessionStorage.length)) {
   refreshing();
 }

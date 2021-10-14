@@ -71,13 +71,11 @@ for (x in category) {
       probut.setAttribute("id", `${produk[y]["iden"]}`);
       probut.innerHTML = "Add item";
       probut.addEventListener("click", function () {
-        var tbod = document.querySelector("tbody");
-        if (Boolean(Object.keys(sessionStorage))) {
+        if (Boolean(sessionStorage.length)) {
           erase();
-          checkchart(this.getAttribute("id"));
-        } else {
-          checkchart(this.getAttribute("id"));
         }
+        checkchart(this.getAttribute("id"));
+        refreshing();
         // checkchart(this.getAttribute("id"));
       });
 
@@ -93,15 +91,4 @@ for (x in category) {
   divcat.append(headercat, empdiv);
   //   console.log(headercat);
   accordion.append(divcat);
-}
-
-var reset = document.getElementById("reset");
-if (reset) {
-  reset.addEventListener("click", function () {
-    this.remove();
-    erase();
-    console.log("done");
-    sessionStorage.clear();
-    refreshing();
-  });
 }

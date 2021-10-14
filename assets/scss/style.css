@@ -30,7 +30,7 @@ section .title p {
 
 .home {
   height: 100vh;
-  padding-top: 20vh;
+  padding-top: 25vh;
   background-color: #ebb4d2;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
