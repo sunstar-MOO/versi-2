@@ -657,3 +657,22 @@ var produk = {
     nett: "13000",
   },
 };
+
+var contacts = {
+  ig: {
+    name: "INSTAGRAM",
+    link: "https://instagram.com/sunstar.moo",
+  },
+  wa: {
+    name: "WHATSAPP",
+    link: "https://wa.me/message/KTRZSLPC3FSVG1",
+  },
+  te: {
+    name: "TELEGRAM",
+    link: "https://t.me/andierinafaqiha",
+  },
+  em: {
+    name: "EMAIL",
+    link: "mailto:okayjustsendtome@gmail.com",
+  },
+};

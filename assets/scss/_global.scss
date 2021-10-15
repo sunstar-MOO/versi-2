@@ -1,3 +1,16 @@
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: $lgreen;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $dpurple;
+  transition: all 300ms ease-in-out;
+  &:hover {
+    background-color: orange;
+  }
+}
+
 body,
 html {
   font-size: 18px;
@@ -22,7 +35,12 @@ section {
     }
   }
 }
-
+.wave {
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
 .home {
   height: 100vh;
 
@@ -78,4 +96,34 @@ section {
 
 #reset {
   cursor: pointer;
+}
+
+.contact {
+  background-color: $lblue;
+  .contents {
+    margin-top: 20pt;
+    text-align: center;
+    justify-content: center;
+    .items {
+      display: inline-block;
+      margin-top: 3rem;
+
+      .item {
+        background-color: $lgreen;
+        padding: 5pt 50pt;
+        margin: 10px;
+        transition: all 300ms ease;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+      a {
+        display: block;
+        color: $dpurple;
+        font-family: $nunito;
+        text-decoration: none;
+      }
+    }
+  }
 }

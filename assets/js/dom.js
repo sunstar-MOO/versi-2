@@ -92,3 +92,28 @@ for (x in category) {
   //   console.log(headercat);
   accordion.append(divcat);
 }
+
+// CONTACT START
+
+for (kontak in contacts) {
+  var ITEMS = document.querySelector(".contact .items");
+  var ITEM = document.createElement("div");
+  ITEM.classList.add("item");
+  var LINK = document.createElement("a");
+  LINK.setAttribute("href", contacts[kontak]["link"]);
+  // LINK.setAttribute("class", "btn btn-primary");
+  LINK.innerText = contacts[kontak]["name"];
+  ITEM.append(LINK);
+  ITEMS.append(ITEM);
+}
+
+// CONTACT END
+
+//ADD ANIMATON START
+
+// var contact = document.querySelectorAll(".contact .item");
+// for (let i = 0; i < contact.length; i++) {
+//   contact[i].dataset.aos = "fade-down";
+//   contact[i].dataset.aosDelay = i * 300;
+// }
+// AOS.init({});
